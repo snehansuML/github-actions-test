@@ -24,10 +24,11 @@ jobs:
       - name: Install Dependencies
         run: |
           if exist requirements.txt (
+              echo "✅ Installing dependencies..."
               pip install --upgrade pip
               pip install -r requirements.txt
           ) else (
-              echo No requirements.txt found, skipping dependency installation.
+              echo "⚠️ No requirements.txt found, skipping dependency installation."
           )
 
       - name: Run Python Script
