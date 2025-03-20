@@ -5,14 +5,16 @@ on:
     branches:
       - main
 
-
 jobs:
   run-python-script:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Using Windows runner for debugging
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Debug: List Files
+        run: dir  # Show all files in the repository
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -21,4 +23,3 @@ jobs:
 
       - name: Run Python Script
         run: python script.py
-        
