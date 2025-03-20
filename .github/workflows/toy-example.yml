@@ -6,3 +6,11 @@
 
       - name: Debug: Show Output File
         run: type output.json  # On Windows, 'type' prints file contents
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python Script
+        run: python script.py
+
+      - name: Debug: Show Output File
+        run: type output.json  # On Windows, 'type' prints file contents
