@@ -13,8 +13,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Debug: List Files
+      - name: Debug: Enable GitHub Actions Debug Mode
+        run: echo "::debug::GitHub Actions Debugging Enabled"
+
+      - name: Debug: List All Files
         run: dir  # Show all files in the repository
+
+      - name: Debug: Show Current Directory
+        run: echo "Current Directory is: " && cd
+
+      - name: Debug: Show Python Version
+        run: python --version
+
+      - name: Debug: Show Environment Variables
+        run: set  # On Windows, "set" shows all environment variables
 
       - name: Set up Python
         uses: actions/setup-python@v3
