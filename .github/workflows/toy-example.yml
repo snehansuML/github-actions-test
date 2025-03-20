@@ -18,13 +18,20 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Debug: Show Python Version
+        run: python --version
+
       - name: Install Dependencies
         run: |
           if exist requirements.txt (
+            pip install --upgrade pip
             pip install -r requirements.txt
           ) else (
             echo "No requirements.txt found, skipping dependency installation."
           )
+
+      - name: Debug: Show Installed Python Packages
+        run: pip list
 
       - name: Run Python Script
         run: python script.py
