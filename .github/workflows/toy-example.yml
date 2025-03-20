@@ -1,0 +1,17 @@
+name: Simple Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-job:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Print a success message
+        run: echo "✅ GitHub Actions is working!"
