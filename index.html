@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +8,9 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         h1 { color: #4CAF50; }
-        input, button { padding: 10px; margin: 10px; font-size: 16px; }
-        button { background: #4CAF50; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h1>Factorial Calculator</h1>
-    <p>Enter a number and press "Calculate":</p>
-    <input type="number" id="numberInput" placeholder="Enter a number" />
-    <button onclick="calculateFactorial()">Calculate</button>
-    <h2 id="result"></h2>
-
-    <script>
-        function factorial(n) {
-            return (n === 0 || n === 1) ? 1 : n * factorial(n - 1);
-        }
-
-        function calculateFactorial() {
-            let num = document.getElementById("numberInput").value;
-            if (num === "" || num < 0) {
-                document.getElementById("result").innerText = "⚠️ Please enter a valid positive number!";
-                return;
-            }
-            let result = factorial(parseInt(num));
-            document.getElementById("result").innerText = `✅ Factorial of ${num} is ${result}`;
-        }
-    </script>
+    <h1>✅ Factorial of 5 is 120</h1>
 </body>
 </html>
-"<!-- Refresh GitHub Pages -->" 
