@@ -1,7 +1,6 @@
-import sys
+from flask import Flask
 
-# Force UTF-8 encoding to support emojis
-sys.stdout.reconfigure(encoding="utf-8")
+app = Flask(__name__)
 
 def factorial(n):
     if n == 0 or n == 1:
@@ -9,7 +8,11 @@ def factorial(n):
     else:
         return n * factorial(n - 1)
 
-number = 5  # Change this number to calculate a different factorial
-result = factorial(number)
+@app.route('/')
+def home():
+    number = 5  # Change this number to test different factorials
+    result = factorial(number)
+    return f"<h1>✅ Factorial of {number} is {result}</h1>"
 
-print(f"✅ Factorial of {number} is {result}")
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
