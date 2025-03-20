@@ -16,10 +16,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
+      - name: Build Static Site
+        run: |
+          mkdir public
+          cp index.html public/
+
       - name: Upload Static Site
         uses: actions/upload-pages-artifact@v1
         with:
-          path: .
+          path: public
 
       - name: Deploy to GitHub Pages
         id: deployment
