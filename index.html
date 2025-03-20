@@ -7,13 +7,13 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         h1 { color: #4CAF50; }
-        input { padding: 10px; margin-top: 10px; }
-        button { padding: 10px; margin-top: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        input, button { padding: 10px; margin: 10px; font-size: 16px; }
+        button { background: #4CAF50; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
     <h1>Factorial Calculator</h1>
-    <p>Enter a number to calculate its factorial:</p>
+    <p>Enter a number and press "Calculate":</p>
     <input type="number" id="numberInput" placeholder="Enter a number" />
     <button onclick="calculateFactorial()">Calculate</button>
     <h2 id="result"></h2>
