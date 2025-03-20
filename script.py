@@ -1,14 +1,13 @@
-def factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
+import os
 
-# Calculate factorial
-number = 5  # Change this number if needed
+def factorial(n):
+    return 1 if n == 0 or n == 1 else n * factorial(n - 1)
+
+# Generate factorial result
+number = 5
 result = factorial(number)
 
-# Generate an HTML file
+# Generate an HTML file with the result
 html_content = f"""
 <!DOCTYPE html>
 <html lang="en">

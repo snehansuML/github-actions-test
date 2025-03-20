@@ -1,4 +1,4 @@
-name: Deploy Factorial Calculator to GitHub Pages
+name: Generate and Deploy Factorial Page
 
 on:
   push:
@@ -6,37 +6,28 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  deploy:
+  generate-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.8'
 
-      - name: Generate Factorial Web Page
+      - name: Run Python Script to Generate HTML
+        run: python script.py
+
+      - name: Commit and Push the Generated HTML
         run: |
-          mkdir -p public
-          echo "Running Python script to generate factorial page..."
-          python script.py
-          mv index.html public/index.html
-
-      - name: Upload Static Site
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add index.html
+          git commit -m "Auto-generated index.html"
+          git push
