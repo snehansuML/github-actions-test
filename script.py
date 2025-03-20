@@ -5,10 +5,10 @@ def factorial(n):
         return n * factorial(n - 1)
 
 # Calculate factorial
-number = 5
+number = 5  # Change this number if needed
 result = factorial(number)
 
-# Generate an HTML page with the result
+# Generate an HTML file
 html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ html_content = f"""
 </html>
 """
 
-# Save to an HTML file
+# Save to index.html
 with open("index.html", "w") as f:
     f.write(html_content)
 
