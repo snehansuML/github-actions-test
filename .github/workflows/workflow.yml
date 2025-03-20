@@ -1,4 +1,4 @@
-name: Python Script Workflow
+name: Factorial Calculation Workflow
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  run-python-script:
+  run-factorial-script:
     runs-on: windows-latest
 
     steps:
@@ -18,19 +18,5 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Verify Python Installation
-        run: python --version
-
-      - name: Install Dependencies
-        shell: pwsh
-        run: |
-          if (Test-Path "requirements.txt") {
-            Write-Output "✅ Installing dependencies..."
-            pip install --upgrade pip
-            pip install -r requirements.txt
-          } else {
-            Write-Output "⚠️ No requirements.txt found, skipping dependency installation."
-          }
-
-      - name: Run Python Script
+      - name: Run Factorial Script
         run: python script.py
