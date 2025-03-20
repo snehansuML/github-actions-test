@@ -1,16 +1,38 @@
+name: Python Script Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-python-script:
+    runs-on: windows-latest  # Using Windows runner for compatibility
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          if exist requirements.txt (
+            pip install -r requirements.txt
+          ) else (
+            echo "No requirements.txt found, skipping dependency installation."
+          )
 
       - name: Run Python Script
         run: python script.py
 
       - name: Debug: Show Output File
-        run: type output.json  # On Windows, 'type' prints file contents
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Python Script
-        run: python script.py
-
-      - name: Debug: Show Output File
-        run: type output.json  # On Windows, 'type' prints file contents
+        run: |
+          if exist output.json (
+            type output.json
+          ) else (
+            echo "output.json not found!"
+          )
