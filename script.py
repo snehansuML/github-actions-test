@@ -1,3 +1,8 @@
+import sys
+
+# Force UTF-8 encoding to support emojis
+sys.stdout.reconfigure(encoding="utf-8")
+
 def factorial(n):
     if n == 0 or n == 1:
         return 1
