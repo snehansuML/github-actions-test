@@ -28,13 +28,15 @@ jobs:
 
       - name: Generate Factorial Web Page
         run: |
+          mkdir public
           echo "Running Python script to generate factorial page..."
           python script.py
+          mv index.html public/index.html
 
       - name: Upload Static Site
         uses: actions/upload-pages-artifact@v2
         with:
-          path: .
+          path: public
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
