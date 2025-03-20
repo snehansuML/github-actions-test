@@ -1,0 +1,36 @@
+name: Python Script Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-python-script:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+
+      - name: Verify Python Installation
+        run: python --version
+
+      - name: Install Dependencies
+        shell: pwsh
+        run: |
+          if (Test-Path "requirements.txt") {
+            Write-Output "✅ Installing dependencies..."
+            pip install --upgrade pip
+            pip install -r requirements.txt
+          } else {
+            Write-Output "⚠️ No requirements.txt found, skipping dependency installation."
+          }
+
+      - name: Run Python Script
+        run: python script.py
